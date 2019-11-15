@@ -1,5 +1,5 @@
 #include <iostream>
-
+using namespace std;
 
 /*
 	Conta todas as letras 'letra' contidas em 'texto'
@@ -7,8 +7,8 @@
 int contaLetras(char letra, string texto)
 {
 	int count = 0;
-	for(int i = 0; i < string.length(); i++){
-		if(string[i] == letra)
+	for(int i = 0; i < texto.length(); i++){
+		if(texto[i] == letra)
 		count++;
 	}
 	return count;
@@ -17,12 +17,13 @@ int contaLetras(char letra, string texto)
 /*
 	Substitui todas as ocorrencias de 'letra1' por 'letra2' contidas em 'texto'
 */
-void substituirLetra(char letra1,char letra2, string texto)
+string substituirLetra(char letra1,char letra2, string texto)
 {
 	for(int i = 0; i < texto.length();i++){
 		if(texto[i] == letra1)
 		texto[i] = letra2;
 	}
+	return texto;
 }
 
 /*
@@ -40,11 +41,8 @@ void substituirPalavras(string palavra1, string palavra2, string texto)
 }
 
 int main(){
-
 	cout << "Entre com o texto para fazer o teste:";
 
-
-
-
+	
 	return 0;
 }
