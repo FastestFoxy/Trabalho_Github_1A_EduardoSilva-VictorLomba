@@ -19,7 +19,7 @@ int contaLetras(char letra, string texto)
 */
 void substituirLetra(char letra1,char letra2, string texto)
 {
-	for(int i = 0; i > texto.length();i++){
+	for(int i = 0; i < texto.length();i++){
 		if(texto[i] == letra1)
 		texto[i] = letra2;
 	}
