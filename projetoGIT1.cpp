@@ -1,4 +1,5 @@
 #include <iostream>
+#include<string>
 using namespace std;
 
 /*
@@ -17,7 +18,7 @@ int contaLetras(char letra, string texto)
 /*
 	Substitui todas as ocorrencias de 'letra1' por 'letra2' contidas em 'texto'
 */
-string substituirLetra(char letra1,char letra2, string texto)
+string substituirLetra(char letra1,char letra2, string &texto)
 {
 	for(int i = 0; i < texto.length();i++){
 		if(texto[i] == letra1)
@@ -55,12 +56,41 @@ int contaPalavras(string palavra, string texto)
 /*
 	Substitui todas as ocorrencias de 'palavra1' por 'palavra2' em 'texto'
 */
-void substituirPalavras(string palavra1, string palavra2, string texto)
+string substituirPalavras(string palavra1, string palavra2, string texto)
 {
+    size_t pos = texto.find(palavra1);
+    while(pos != string::npos)
+    {
+        texto.replace(pos,palavra1.length(),palavra2);
+        pos = texto.find(palavra1);
+    }
+    return texto;
 }
 
 int main(){
-	cout << "Entre com o texto para fazer o teste:";
+	string texto, palavra1, palavra2;
+	char letra1, letra2;
+
+	cout << "Entre com o texto para fazer o teste: ";
+	getline(cin, texto);
+	cout << "Entre com a letra que deseja encontrar: ";
+	cin >> letra1;
+    if(contaLetras(letra1, texto)==0) cout << "Nao existem exemplares de '" << letra1 << "' no texto.";
+    else{
+        cout << "Existe(m) " << contaLetras(letra1, texto) << " exemplar(es) desta palavra no texto.";
+        cout << "\nEntre com a letra pela qual gostaria de substituir: ";
+        cin >> letra2;
+        cout << "O texto foi modificado para '" << substituirLetra(letra1, letra2, texto) << "'.";
+    }
+    cout << "\nEntre com a palavra que deseja encontrar: ";
+	cin >> palavra1;
+    if(contaPalavras(palavra1, texto)==0) cout << "Nao existem exemplares de '" << palavra1 << "' no texto.";
+    else{
+        cout << "Existe(m) " << contaPalavras(palavra1, texto) << " exemplar(es) desta palavra no texto.";
+        cout << "\nEntre com a palavra pela qual gostaria de substituir: ";
+        cin >> palavra2;
+        cout << "O texto foi modificado para '" << substituirPalavras(palavra1, palavra2, texto) << "'.";
+    }
 
 
 	return 0;
