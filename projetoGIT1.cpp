@@ -31,6 +31,25 @@ string substituirLetra(char letra1,char letra2, string texto)
 */
 int contaPalavras(string palavra, string texto)
 {
+    int V=0;
+    int y=0;
+    int tamanho=0;
+    for(int x=0;x<texto.length();x++)
+    {
+       if(texto[x]==palavra[y]){
+            tamanho++;
+            for(y = 1; y < palavra.length(); y++){
+                if(texto[x+y]==palavra[y]) tamanho++;
+        }
+        if(tamanho==palavra.length()) V++;
+       }
+       tamanho=0;
+       y=0;
+    }
+
+
+    return V;
+
 }
 
 /*
@@ -43,6 +62,6 @@ void substituirPalavras(string palavra1, string palavra2, string texto)
 int main(){
 	cout << "Entre com o texto para fazer o teste:";
 
-	
+
 	return 0;
 }
